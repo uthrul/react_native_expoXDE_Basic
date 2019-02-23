@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 
 export default class App extends React.Component {
 
   // contoh state
   state = {
-    count: 0
+    count: 0,
+    text: 0
   }
 
   render() {
@@ -16,15 +17,29 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-      
+
         <Text>Best Hardcore Band </Text>
         <Image source={pic} style={{ height: 200, width: 250 }} />
         <Name name="Get The Shot"></Name>
-        <Text>Kasih Nilai Yang Pantas Untuk band Ini</Text>
+        <Text>How Much Value Is This For The Band ? </Text>
 
         <Button title="+" onPress={() => this.setState({ count: this.state.count + 1 })} />
         <Text>{this.state.count}</Text>
         <Button title="-" onPress={() => this.setState({ count: this.state.count - 1 })} />
+
+        <Text>What is Your Favorite Hardcore Band ?</Text>
+        <TextInput
+          onChangeText={(text) => this.setState({ text })}
+          placeholder='Your Band'
+          style={{
+            height: 40,
+            width: 200,
+            borderColor: 'pnik',
+            borderWidth: 1,
+            borderRadius: 5,
+          }}
+        />
+        <Text>{this.state.text}</Text>
 
       </View>
     );
