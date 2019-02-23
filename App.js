@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 
 export default class App extends React.Component {
-  render() {
 
+  // contoh state
+  state = {
+    count: 0
+  }
+
+  render() {
     // contoh props 1
     let pic = {
       uri: 'https://bloximages.newyork1.vip.townnews.com/thesuburban.com/content/tncms/assets/v3/editorial/b/1c/b1c50de4-6a97-11e8-b5db-37ed72466eb6/5b19a0390b4bc.image.jpg?resize=400%2C228'
@@ -11,9 +16,16 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>Get The Shoot - Hardcore SXE </Text>
+      
+        <Text>Best Hardcore Band </Text>
         <Image source={pic} style={{ height: 200, width: 250 }} />
-        <Name name="STRAIGHT EDGE"></Name>
+        <Name name="Get The Shot"></Name>
+        <Text>Kasih Nilai Yang Pantas Untuk band Ini</Text>
+
+        <Button title="+" onPress={() => this.setState({ count: this.state.count + 1 })} />
+        <Text>{this.state.count}</Text>
+        <Button title="-" onPress={() => this.setState({ count: this.state.count - 1 })} />
+
       </View>
     );
   }
@@ -23,7 +35,7 @@ export default class App extends React.Component {
 class Name extends Component {
   render() {
     return (
-      <Text>Hello {this.props.name}</Text>
+      <Text>Nama Band :  {this.props.name}</Text>
     )
   }
 }
