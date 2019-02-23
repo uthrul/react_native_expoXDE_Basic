@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
+import {
+  StyleSheet, Text, View,
+  Image, Button, TextInput,
+  Alert, ScrollView
+} from 'react-native';
 
 export default class App extends React.Component {
 
   // contoh state
   state = {
     count: 0,
-    text: 0
+    text: ""
   }
 
   render() {
@@ -16,32 +20,37 @@ export default class App extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.containerScroll}>
+        <View style={styles.container}>
+          <Button
+            onPress={() => { Alert.alert('mediasuporthardcoreband.com'); }} title="About Me"
+          />
+          <Text style={{ marginBottom: 10, }}>Best Hardcore Band </Text>
 
-        <Text>Best Hardcore Band </Text>
-        <Image source={pic} style={{ height: 200, width: 250 }} />
-        <Name name="Get The Shot"></Name>
-        <Text>How Much Value Is This For The Band ? </Text>
+          <Image source={pic} style={{ height: 200, width: 250, marginBottom: 10, borderRadius: 10, }} />
+          <Name name="Get The Shot"></Name>
+          <Text style={{ marginTop: 10, }}>How Much Value Is This For The Band ? </Text>
 
-        <Button title="+" onPress={() => this.setState({ count: this.state.count + 1 })} />
-        <Text>{this.state.count}</Text>
-        <Button title="-" onPress={() => this.setState({ count: this.state.count - 1 })} />
+          <Button title="+" onPress={() => this.setState({ count: this.state.count + 1 })} />
+          <Text >{this.state.count}</Text>
+          <Button title="-" onPress={() => this.setState({ count: this.state.count - 1 })} />
 
-        <Text>What is Your Favorite Hardcore Band ?</Text>
-        <TextInput
-          onChangeText={(text) => this.setState({ text })}
-          placeholder='Your Band'
-          style={{
-            height: 40,
-            width: 200,
-            borderColor: 'pnik',
-            borderWidth: 1,
-            borderRadius: 5,
-          }}
-        />
-        <Text>{this.state.text}</Text>
-
-      </View>
+          <Text style={{ marginBottom: 10, }}>What is Your Favorite Hardcore Band ?</Text>
+          <TextInput
+            onChangeText={(text) => this.setState({ text })}
+            placeholder='Your Band'
+            style={{
+              height: 40,
+              width: 200,
+              borderColor: 'pnik',
+              borderWidth: 1,
+              borderRadius: 5,
+              marginBottom: 10,
+            }}
+          />
+          <Text>{this.state.text}</Text>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -56,9 +65,12 @@ class Name extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  containerScroll: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  container: {
+    height: 850,
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
   },
