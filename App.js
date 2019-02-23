@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Text, View,
   Image, Button, TextInput,
-  Alert, ScrollView
+  Alert, ScrollView, FlatList, SectionList,
 } from 'react-native';
 
 export default class App extends React.Component {
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       <ScrollView style={styles.containerScroll}>
         <View style={styles.container}>
           <Button
-            onPress={() => { Alert.alert('mediasuporthardcoreband.com'); }} title="About Me"
+            onPress={() => { Alert.alert('mediahardcore.com'); }} title="About Me"
           />
           <Text style={{ marginBottom: 10, }}>Best Hardcore Band </Text>
 
@@ -49,6 +49,41 @@ export default class App extends React.Component {
             }}
           />
           <Text>{this.state.text}</Text>
+          <Text style={{ marginBottom: 10, fontSize: 20 }}>Best Music Gendre on Earth</Text>
+          <FlatList
+            data={[
+              { key: 'Punk' },
+              { key: 'Hardcore' },
+              { key: 'Melodic Punk' },
+              { key: 'MetalCore' },
+              { key: 'Grincore' },
+            ]}
+            renderItem={({ item }) => <Text style={{ fontSize: 15, padding: 5, }}>{item.key}</Text>}
+          />
+
+          <Text style={{ marginBottom: 10, fontSize: 20 }}>Best Hardcore Band on Earth</Text>
+
+          <SectionList
+            sections={[
+              { title: 'A', data: ['Agent Orange', 'Agnostic Front'] },
+              { title: 'B', data: ['Bad Brains', 'Bane', 'Black Flag', 'Beastie Boys'] },
+              { title: 'C', data: ['CIV'] },
+              { title: 'D', data: ['DOA'] },
+              { title: 'E', data: ['Earth Crisis'] },
+              { title: 'F', data: ['Fugazi'] },
+              { title: 'G', data: ['Gorilla Biscuits'] },
+              { title: 'H', data: ['H2O'] },
+              { title: 'I', data: ['In My Eyes'] },
+              { title: 'J', data: ['JFA'] },
+              { title: 'K', data: ['Kill Your Idols'] },
+              { title: 'M', data: ['Minor Threat'] },
+              { title: 'T', data: ['Terror'] },
+            ]}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item }) => <Text style={{ marginBottom: 10, fontSize: 15 }}>{item}</Text>}
+            renderSectionHeader={({ section }) => <Text style={{fontSize: 20 }}>{section.title}</Text>}
+          />
+
         </View>
       </ScrollView>
     );
@@ -59,18 +94,19 @@ export default class App extends React.Component {
 class Name extends Component {
   render() {
     return (
-      <Text>Nama Band :  {this.props.name}</Text>
+      <Text>The Band :  {this.props.name}</Text>
     )
   }
 }
 
 const styles = StyleSheet.create({
   containerScroll: {
-    flex: 1,
+    paddingTop: 50,
+    height: 1500,
+    backgroundColor: 'pink',
+
   },
   container: {
-    height: 850,
-    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
   },
